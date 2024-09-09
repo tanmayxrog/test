@@ -1,0 +1,27 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const videoPlayer = document.getElementById('videoPlayer');
+    const playPauseButton = document.getElementById('playPauseButton');
+    const fullScreenButton = document.getElementById('fullScreenButton');
+
+    playPauseButton.addEventListener('click', function() {
+        if (videoPlayer.paused) {
+            videoPlayer.play();
+            playPauseButton.textContent = 'Pause';
+        } else {
+            videoPlayer.pause();
+            playPauseButton.textContent = 'Play';
+        }
+    });
+
+    fullScreenButton.addEventListener('click', function() {
+        if (videoPlayer.requestFullscreen) {
+            videoPlayer.requestFullscreen();
+        } else if (videoPlayer.mozRequestFullScreen) { // Firefox
+            videoPlayer.mozRequestFullScreen();
+        } else if (videoPlayer.webkitRequestFullscreen) { // Chrome, Safari and Opera
+            videoPlayer.webkitRequestFullscreen();
+        } else if (videoPlayer.msRequestFullscreen) { // IE/Edge
+            videoPlayer.msRequestFullscreen();
+        }
+    });
+});
